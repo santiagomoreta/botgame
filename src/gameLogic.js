@@ -1,18 +1,21 @@
 
 export const introText =
-  "🕵️‍♂️ Bienvenidos al caso *Sombra en la Mansión*. " +
-  "Un coleccionista ha sido hallado sin vida. ¿Quién es el asesino? " +
-  "Usa /pista, /interrogar <personaje>, /inventario y /acusar <nombre>.";
+  "🕵️‍♂️ *Bienvenidos al caso.*\n\n" +
+  "Escribe ahora los *nombres de los personajes* separados por comas.\n" +
+  "Ejemplos:\n" +
+  "• `Ramírez, Elena, Lázaro, Beltrán`\n" +
+  "• `Ana, Bruno, Carla`";
 
-export function buildSystemPrompt() {
+export function buildSystemPrompt(characters = []) {
+  const elenco = characters.length ? characters.join(", ") : "—";
   return `
-Eres el Narrador de un juego de misterio en Telegram.
-- Ambientación: Mansión en la sierra, noche de tormenta.
-- Personajes: Mayordomo (Ramírez), Sobrina (Elena), Jardinero (Lázaro), Anticuario (Beltrán).
-- Dinámica: Da pistas graduales; responde como PNJ cuando te interroguen.
-- Mantén coherencia y no reveles el asesino hasta una acusación fuerte.
-- Usa tono inmersivo, breve y con emojis sutiles.
-`;
+    Eres el Narrador de un juego de misterio en un grupo de Telegram.
+    - Ambientación: Mansión en la sierra, noche de tormenta.
+    - Personajes de esta partida: ${elenco}.
+    - Dinámica: ofrece pistas graduales; responde como PNJ cuando te interroguen.
+    - No reveles el asesino hasta que haya acusaciones con pruebas.
+    - Estilo inmersivo, conciso y con detalles sensoriales.
+    `;
 }
 
 export function npcResponsePrompt(npcName, question) {
@@ -35,4 +38,14 @@ export function inventoryList() {
     "📜 Recibo de compra de un lote de arte",
     "🧪 Frasco con residuo rojizo",
   ];
+}
+
+export function personajesText(unique) {
+  return `✅ Personajes configurados (${unique.length}):\n- ${unique.join("\n- ")}\n\n` +
+    "🎲 ¡Comienza el misterio!\n" +
+    "• `/pista` → una pista\n" +
+    "• `/personajes` → ver elenco\n" +
+    "• `/interrogar <nombre>` → hablar con un PNJ\n" +
+    "• `/acusar <nombre>` → registrar una acusación\n" +
+    "• `/reset` → reiniciar la partida";
 }
