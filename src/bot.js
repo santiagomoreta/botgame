@@ -47,3 +47,4 @@ export function startBot(token, options = {}) {
   });
 
   return client;
+  
