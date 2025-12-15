@@ -1,15 +1,14 @@
 {
-  "name": "telegram-mystery-bot",
+  "name": "impostor-bot",
   "version": "1.0.0",
   "type": "module",
-  "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start:worker": "node src/bot.js",
+    "start:web": "node health.js"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "node-telegram-bot-api": "^0.66.0",
-    "openai": "^4.0.0",
-    "dotenv": "^16.4.5"
-  }
-}
+    "discord.js": "^14.16.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+   }
+
