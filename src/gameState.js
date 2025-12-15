@@ -26,3 +26,4 @@ export async function dm(member, content) {
 export function displayName(guild, userId) {
   const m = guild.members.cache.get(userId);
    return m ? m.displayName : `ID:${userId}`;
+}
