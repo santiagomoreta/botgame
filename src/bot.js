@@ -1,5 +1,9 @@
 import {
-  Client, GatewayIntentBits, Partials, Events, PermissionsBitField
+  Client,
+  GatewayIntentBits,
+  Partials,
+  Events,
+  PermissionsBitField
 } from 'discord.js';
 
 export function startBot(token, options = {}) {
@@ -37,9 +41,9 @@ export function startBot(token, options = {}) {
     console.log(`Conectado como ${c.user.tag} (id=${c.user.id})`);
   });
 
-  client.login(token).catch(err => {
-       console.error('Error al iniciar sesión en Discord:', err);
-    process.exit(1);
+  client.login(token).catch((err) => {
+    console.error('Error al iniciar sesión en Discord:', err);
+       process.exit(1);
   });
 
   return client;
