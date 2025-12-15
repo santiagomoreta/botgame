@@ -163,3 +163,4 @@ async function finishGame(guildId, games) {
 
   await game.channel.send(lines.join('\n'));
    game.active = false;
+}
